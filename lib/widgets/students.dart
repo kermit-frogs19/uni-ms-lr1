@@ -1,22 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:seliukov_vadim_kiuki_21_9/models/student.dart';
 import 'package:seliukov_vadim_kiuki_21_9/widgets/student_item.dart';
+import 'package:seliukov_vadim_kiuki_21_9/widgets/new_student.dart';
+
 
 class Students extends StatelessWidget {
   const Students({
     Key? key,
     required this.students,
+    required this.onDelete,
+    required this.onEdit,
   }) : super(key: key);
 
   final List<Student> students;
+  final Function(int) onDelete;
+  final Function(int, Student) onEdit;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: students.length,
-      itemBuilder: (context, index) => StudentItem(
-        student: students[index],
-      ),
+      itemBuilder: (context, index) {
+        final student = students[index];
+        return Dismissible(
+          key: Key(student.firstName + student.lastName),
+          direction: DismissDirection.endToStart,
+          onDismissed: (direction) {
+            onDelete(index);
+          },
+          child: InkWell(
+            onTap: () {
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                builder: (context) => NewStudent(
+                  onSave: (updatedStudent) {
+                    onEdit(index, updatedStudent);
+                  },
+                  existingStudent: student,
+                ),
+              );
+            },
+            child: StudentItem(student: student),
+          ),
+        );
+      },
     );
   }
 }

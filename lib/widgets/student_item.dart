@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:seliukov_vadim_kiuki_21_9/models/student.dart';
 
+
 class StudentItem extends StatelessWidget {
   const StudentItem({
     Key? key,
@@ -11,12 +12,10 @@ class StudentItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // item color based on gender
     final Color cardColor = student.gender == Gender.male
         ? Colors.blue
         : Colors.pink;
 
-    // item icon based on department
     final IconData departmentIcon;
     switch (student.department) {
       case Department.it:
