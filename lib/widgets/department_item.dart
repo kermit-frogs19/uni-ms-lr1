@@ -3,7 +3,7 @@ import 'package:seliukov_vadim_kiuki_21_9/models/department.dart';
 
 class DepartmentItem extends StatelessWidget {
   final DepartmentModel department;
-  final int studentCount; // Number of students in this department
+  final int studentCount; 
 
   const DepartmentItem({
     super.key,
@@ -46,7 +46,7 @@ class DepartmentItem extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                'Students enrolled: $studentCount', // Display student count
+                'Students enrolled: $studentCount',
                 style: const TextStyle(
                   color: Colors.white70,
                   fontSize: 14,
@@ -68,3 +68,5 @@ class DepartmentItem extends StatelessWidget {
     );
   }
 }
+
+

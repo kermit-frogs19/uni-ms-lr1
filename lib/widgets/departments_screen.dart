@@ -9,16 +9,15 @@ class DepartmentsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Get the student counts by department
     final departmentStudentCounts = ref.watch(departmentStudentCountsProvider);
 
     return GridView.builder(
       padding: const EdgeInsets.all(10.0),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2, // Two items per row
+        crossAxisCount: 2,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
-        childAspectRatio: 3 / 2.5, // Adjust the height/width ratio
+        childAspectRatio: 3 / 2.5, 
       ),
       itemCount: departments.length,
       itemBuilder: (context, index) {
@@ -27,7 +26,7 @@ class DepartmentsScreen extends ConsumerWidget {
 
         return DepartmentItem(
           department: department,
-          studentCount: studentCount, // Pass the count to the widget
+          studentCount: studentCount,
         );
       },
     );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'students_screen.dart'; // Import the Students screen
-import 'departments_screen.dart'; // Import the Departments screen
+import 'students_screen.dart';
+import 'departments_screen.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({super.key});
@@ -10,9 +10,8 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  int _selectedIndex = 0; // Track the selected tab
+  int _selectedIndex = 0; 
 
-  // List of screens for the tabs
   final List<Map<String, dynamic>> _tabs = [
     {
       'screen': const DepartmentsScreen(),
@@ -24,7 +23,6 @@ class _TabsScreenState extends State<TabsScreen> {
     },
   ];
 
-  // Handle tab selection
   void _selectTab(int index) {
     setState(() {
       _selectedIndex = index;

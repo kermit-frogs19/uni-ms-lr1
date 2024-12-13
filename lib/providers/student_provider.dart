@@ -1,8 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/student.dart';
-// Import your departments list
 
-// State Notifier for managing the students list
+
 class StudentNotifier extends StateNotifier<List<Student>> {
   StudentNotifier() : super([
     Student(
@@ -48,7 +47,6 @@ final studentProvider = StateNotifierProvider<StudentNotifier, List<Student>>(
 final departmentStudentCountsProvider = Provider<Map<Department, int>>((ref) {
   final students = ref.watch(studentProvider);
 
-  // Initialize counts for all Department enum values
   final counts = <Department, int>{
     for (var department in Department.values) department: 0,
   };
