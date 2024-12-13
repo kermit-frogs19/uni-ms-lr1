@@ -1,4 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.seliukov_vadim_kiuki_21_9">
     <application
         android:label="seliukov_vadim_kiuki_21_9"
         android:name="${applicationName}"

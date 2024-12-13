@@ -11,35 +11,44 @@ class StudentsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final students = ref.watch(studentProvider);
-
     final studentNotifier = ref.read(studentProvider.notifier);
+    
 
     return Scaffold(
-      body: Students(
-        students: students,
-        onDelete: (index) {
-          final deletedStudent = students[index];
+      body: studentNotifier.isLoading
+          ? const Center(
+              child: CircularProgressIndicator(), // Show loading spinner
+            )
+          : Students(
+              students: students,
+              onDelete: (index) {
+                final deletedStudent = students[index];
 
-          studentNotifier.deleteStudent(index);
+                studentNotifier.deleteStudent(index);
 
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                '${deletedStudent.firstName} ${deletedStudent.lastName} deleted',
-              ),
-              action: SnackBarAction(
-                label: 'UNDO',
-                onPressed: () {
-                  studentNotifier.addStudentAt(index, deletedStudent);
-                },
-              ),
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      '${deletedStudent.firstName} ${deletedStudent.lastName} deleted',
+                    ),
+                    action: SnackBarAction(
+                      label: 'UNDO',
+                      onPressed: () {studentNotifier.addStudentAt(index, deletedStudent);},
+                    ),
+                    duration: const Duration(seconds: 3), // Set SnackBar duration
+                  ),
+                ).closed.then((reason) {
+                  // Check if the action wasn't undone
+                  if (reason != SnackBarClosedReason.action) {
+                    // Finalize the deletion on Firebase
+                    studentNotifier.finalizeDelete();
+                  }
+                });
+              },
+              onEdit: (index, updatedStudent) {
+                studentNotifier.editStudent(index, updatedStudent);
+              },
             ),
-          );
-        },
-        onEdit: (index, updatedStudent) {
-          studentNotifier.editStudent(index, updatedStudent);
-        },
-      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => showModalBottomSheet(
           context: context,

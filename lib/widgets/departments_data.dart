@@ -15,7 +15,7 @@ final List<DepartmentModel> departments = [
     id: '2',
     name: 'Finance',
     color: Colors.green,
-    icon: Icons.gavel,
+    icon: Icons.account_balance,
     enumValue: Department.finance,
   ),
   DepartmentModel(

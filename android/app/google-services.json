@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "579868901565",
+    "firebase_url": "https://ms4-kiuki-21-9-seliukov-vadim-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "ms4-kiuki-21-9-seliukov-vadim",
+    "storage_bucket": "ms4-kiuki-21-9-seliukov-vadim.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:579868901565:android:4e27704d8cf347cd0c77d4",
+        "android_client_info": {
+          "package_name": "com.example.seliukov_vadim_kiuki_21_9"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjtSrkc-Ur36gkFxiK0BfovkGSTv8K03Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
