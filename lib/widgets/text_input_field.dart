@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class TextInputField extends StatelessWidget {
   const TextInputField({
-    Key? key,
+    super.key,
     required this.controller,
     required this.labelText,
     this.maxLength,
     this.keyboardType,
-  }) : super(key: key);
+  });
 
   final TextEditingController controller;
   final String labelText;

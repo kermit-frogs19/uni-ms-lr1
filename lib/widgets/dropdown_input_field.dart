@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class DropdownInputField<T> extends StatelessWidget {
   const DropdownInputField({
-    Key? key,
+    super.key,
     required this.value,
     required this.items,
     required this.onChanged,
     required this.labelText,
-  }) : super(key: key);
+  });
 
   final T value;
   final List<T> items;

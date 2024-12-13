@@ -6,11 +6,11 @@ import 'package:seliukov_vadim_kiuki_21_9/widgets/new_student.dart';
 
 class Students extends StatelessWidget {
   const Students({
-    Key? key,
+    super.key,
     required this.students,
     required this.onDelete,
     required this.onEdit,
-  }) : super(key: key);
+  });
 
   final List<Student> students;
   final Function(int) onDelete;

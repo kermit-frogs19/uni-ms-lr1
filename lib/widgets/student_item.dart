@@ -4,9 +4,9 @@ import 'package:seliukov_vadim_kiuki_21_9/models/student.dart';
 
 class StudentItem extends StatelessWidget {
   const StudentItem({
-    Key? key,
+    super.key,
     required this.student,
-  }) : super(key: key);
+  });
 
   final Student student;
 

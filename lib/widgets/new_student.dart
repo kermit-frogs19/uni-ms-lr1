@@ -4,7 +4,7 @@ import 'package:seliukov_vadim_kiuki_21_9/widgets/text_input_field.dart';
 import 'package:seliukov_vadim_kiuki_21_9/widgets/dropdown_input_field.dart';
 
 class NewStudent extends StatefulWidget {
-  const NewStudent({Key? key, required this.onSave, this.existingStudent}) : super(key: key);
+  const NewStudent({super.key, required this.onSave, this.existingStudent});
 
   final Function(Student) onSave;
   final Student? existingStudent;
