@@ -12,11 +12,15 @@ class StudentNotifier extends StateNotifier<List<Student>> {
   final DatabaseReference _db = FirebaseDatabase.instance.ref('students');
   Student? _pendingDelete;
   int? _pendingDeleteIndex;
-  bool isLoading = true; // Indicates if data is being fetched
+  bool isLoading = true; 
 
   Future<void> fetchStudents() async {
     try {
       final snapshot = await _db.get();
+
+      // Simulate a loading time to show the Loading element
+      await Future.delayed(const Duration(seconds: 3));
+
       if (snapshot.exists) {
         final data = snapshot.value as Map<dynamic, dynamic>;
         final fetchedStudents = data.entries.map((entry) {
@@ -38,7 +42,7 @@ class StudentNotifier extends StateNotifier<List<Student>> {
     } catch (e) {
       print('Failed to fetch students: $e');
     } finally {
-      isLoading = false; // Set loading to false once data is fetched
+      isLoading = false;
     }
   }
 
@@ -63,7 +67,6 @@ class StudentNotifier extends StateNotifier<List<Student>> {
     students.insert(index, student);
     state = students;
 
-    // Clear pending delete state
     _pendingDelete = null;
     _pendingDeleteIndex = null;
   }
@@ -121,32 +124,6 @@ class StudentNotifier extends StateNotifier<List<Student>> {
     }
   }
 }
-
-
-
-
-  // void addStudent(Student student) {
-  //   state = [...state, student];
-  // }
-
-  // void addStudentAt(int index, Student student) {
-  //   final students = [...state];
-  //   students.insert(index, student);
-  //   state = students;
-  // }
-
-  // void editStudent(int index, Student updatedStudent) {
-  //   final students = [...state];
-  //   students[index] = updatedStudent;
-  //   state = students;
-  // }
-
-  // void deleteStudent(int index) {
-  //   final students = [...state];
-  //   students.removeAt(index);
-  //   state = students;
-  // }
-
 
 final studentProvider = StateNotifierProvider<StudentNotifier, List<Student>>(
   (ref) => StudentNotifier(),

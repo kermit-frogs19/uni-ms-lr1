@@ -17,7 +17,7 @@ class StudentsScreen extends ConsumerWidget {
     return Scaffold(
       body: studentNotifier.isLoading
           ? const Center(
-              child: CircularProgressIndicator(), // Show loading spinner
+              child: CircularProgressIndicator(), 
             )
           : Students(
               students: students,
@@ -35,7 +35,7 @@ class StudentsScreen extends ConsumerWidget {
                       label: 'UNDO',
                       onPressed: () {studentNotifier.addStudentAt(index, deletedStudent);},
                     ),
-                    duration: const Duration(seconds: 3), // Set SnackBar duration
+                    duration: const Duration(seconds: 3),
                   ),
                 ).closed.then((reason) {
                   // Check if the action wasn't undone
